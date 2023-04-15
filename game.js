@@ -1,5 +1,6 @@
 const imgPath = './assets/images/'
 let bone;
+let firstRender = true;
 
 function setup(){
     bone = loadImage(imgPath + "hone.png");
@@ -9,11 +10,19 @@ function setup(){
     background(255);
     drawBomb(x, y, 20)
     fill(255, 255, 255);
-    
+
+
 }
 
 function draw(){
-    image(bone, 200, 200);
+    if(firstRender) {
+        bone.resize(100, 100)
+        image(bone, 200, 200)
+        firstRender = false
+    }
+    
+    fill(0, 0, 0);
+    ellipse(mouseX, mouseY, 75, 75);
 }
 
 function drawBomb(x, y, counter) {
